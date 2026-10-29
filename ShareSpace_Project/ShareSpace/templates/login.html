@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Sign in · ShareSpace{% endblock %}
+{% block content %}
+<section class="auth-layout">
+ <div class="hero-panel"><div class="eyebrow">SHARE MORE. WASTE LESS.</div><h1>Great resources<br>shouldn't sit idle.</h1><p>Find spaces and equipment, request access responsibly, and keep every handoff accountable.</p><div class="hero-points"><span>✓ Verified access</span><span>✓ Owner-controlled approvals</span><span>✓ Transparent activity history</span></div></div>
+ <div class="auth-card"><div class="eyebrow">WELCOME BACK</div><h2>Sign in to ShareSpace</h2><p class="muted">Use a demo account or register a new profile.</p>
+ <form method="post" class="stack"><label>Email address<input type="email" name="email" required placeholder="you@college.edu"></label><label>Password<input type="password" name="password" required placeholder="Your password"></label><button class="btn primary full">Sign in</button></form>
+ <p class="auth-switch">New to ShareSpace? <a href="{{ url_for('register') }}">Create an account</a></p>
+ <details class="demo-details"><summary>Demo credentials</summary><p><b>Owner:</b> owner@sharespace.demo / owner123</p><p><b>Student:</b> student@sharespace.demo / student123</p><p><b>Manager:</b> manager@sharespace.demo / manager123</p></details>
+ </div>
+</section>
+{% endblock %}

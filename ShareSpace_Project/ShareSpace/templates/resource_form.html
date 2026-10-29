@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}List a resource · ShareSpace{% endblock %}
+{% block content %}<div class="form-page"><a class="back-link" href="{{ url_for('dashboard') }}">← Back to dashboard</a><div class="eyebrow">CONTRIBUTE TO THE COMMUNITY</div><h1>List a resource</h1><p class="muted">Be clear about access conditions and the responsibility users take on.</p>
+<form method="post" class="panel form-grid">
+<label>Resource name *<input name="name" required placeholder="e.g. DSLR Camera Kit"></label><label>Category *<select name="category" required><option>Lab Equipment</option><option>Camera & Media</option><option>Space</option><option>Fabrication</option><option>Computers</option><option>Other</option></select></label>
+<label class="span-2">Description *<textarea name="description" required placeholder="What is included? What is it suitable for?"></textarea></label><label class="span-2">Location *<input name="location" required placeholder="Building, room, campus"></label>
+<label>Available from *<input type="date" name="available_from" required></label><label>Available until *<input type="date" name="available_to" required></label>
+<label class="span-2">Eligibility / training requirements<textarea name="requirements" placeholder="e.g. Safety induction required, institution membership"></textarea></label><label class="span-2">Usage rules<textarea name="rules" placeholder="e.g. Staff supervision required; return all accessories"></textarea></label><label>Refundable deposit (₹)<input type="number" min="0" step="0.01" name="deposit" value="0"></label>
+<div class="span-2 form-actions"><button class="btn primary">Publish listing</button><a class="btn ghost-btn" href="{{ url_for('dashboard') }}">Cancel</a></div></form></div>{% endblock %}

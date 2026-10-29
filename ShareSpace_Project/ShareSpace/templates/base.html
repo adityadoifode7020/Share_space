@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ShareSpace{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('dashboard') if current_user else url_for('login') }}"><span class="brand-mark">S</span><span>ShareSpace<small>Trusted resource sharing</small></span></a>
+  {% if current_user %}
+  <nav><a href="{{ url_for('dashboard') }}">Dashboard</a>{% if current_role in ['owner','manager','admin'] %}<a href="{{ url_for('new_resource') }}">List a resource</a>{% endif %}{% if current_role in ['manager','admin'] %}<a href="{{ url_for('admin') }}">Admin & audit</a>{% endif %}<span class="user-chip">{{ current_user }} · {{ current_role }}</span><a class="nav-logout" href="{{ url_for('logout') }}">Sign out</a></nav>
+  {% endif %}
+</header>
+<main class="page">
+  {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-stack">{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<footer>ShareSpace · Prototype for responsible, fair access to shared resources</footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>
